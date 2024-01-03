@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Django settings for project project.
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-@0z$9fp7cdl8$*toz#xneq9!*op(0mtx^9$d0=!@2ux_ab#+b$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["26.188.136.214", '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -132,3 +133,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
