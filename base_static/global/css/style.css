@@ -208,6 +208,7 @@ svg {
   max-width: 32rem;
   border-radius: var(--default-border-radius);
   border: 1px solid var(--link-light-color);
+  transition: box-shadow 0.3s ease;
 }
 
 .search-input:focus {
