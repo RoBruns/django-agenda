@@ -29,10 +29,27 @@ class ContactForm(forms.ModelForm):
         ]
 
     def clean(self) -> dict[str, Any]:
+        cleaned_data = self.cleaned_data
+        first_name = cleaned_data.get('first_name')
+        last_name = cleaned_data.get('last_name')
 
-        self.add_error(
-            None,
-            ValidationError('This is a test error.', code='test')
-        )
+        if first_name == last_name:
+            msg = ValidationError(
+                'Primeiro nome não pode ser igual ao segundo',
+                code='invalid'
+            )
+            self.add_error('first_name', msg)
+            self.add_error('last_name', msg)
 
         return super().clean()
+
+    def clean_first_name(self) -> str:
+        first_name = self.cleaned_data.get('first_name')
+
+        if len(first_name) < 3:
+            raise ValidationError(
+                'Primeiro nome deve ter mais de 3 caracteres',
+                code='invalid'
+            )
+
+        return first_name
