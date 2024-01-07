@@ -26,6 +26,9 @@ class ContactForm(forms.ModelForm):
             'first_name',
             'last_name',
             'phone',
+            'email',
+            'description',
+            'category',
         ]
 
     def clean(self) -> dict[str, Any]:
@@ -48,7 +51,7 @@ class ContactForm(forms.ModelForm):
 
         if len(first_name) < 3:
             raise ValidationError(
-                'Primeiro nome deve ter mais de 3 caracteres',
+                'Nome deve ter mais de 3 caracteres',
                 code='invalid'
             )
 
