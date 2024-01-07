@@ -1,13 +1,22 @@
-from django.core.paginator import Paginator
-from django.db.models import Q
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import render
 
-from contact.models import Contact
+from contact.forms import ContactForm
 
 
 def create(request):
+    if request.method == 'POST':
+        context = {
+            'form': ContactForm(data=request.POST),
+        }
+
+        return render(
+            request,
+            'contact/create.html',
+            context
+        )
+
     context = {
-     
+        'form': ContactForm(data=request.POST or None),
     }
 
     return render(
