@@ -1,10 +1,10 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-  <h1>CREATE CONTACT</h1>
+  <h1>Atualizar Contato</h1>
   <div class="form-wrapper">
 
-    <h2>Contact</h2>
+    <h2>Update - {{ contact.first_name }} {{ contact.last_name }} ({{ contact.id }})</h2>
 
     <form 
       action="{{ form_action }}"

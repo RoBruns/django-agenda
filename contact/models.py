@@ -27,8 +27,7 @@ class Contact(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
-        blank=True,
-        null=True)
+        null=True,)
     owner = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
