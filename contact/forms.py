@@ -1,6 +1,7 @@
 from typing import Any
 
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
 from contact.models import Contact
@@ -65,3 +66,7 @@ class ContactForm(forms.ModelForm):
             )
 
         return first_name
+
+
+class ResgisterForm(UserCreationForm):
+    ...
